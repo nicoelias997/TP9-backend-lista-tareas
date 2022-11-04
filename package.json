@@ -4,7 +4,8 @@
   "description": "practica para hacer una lista de tareas desde el lado del backend, ejercicio1 ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "babel-node src/index.js",
+    "dev": "nodemon --exec babel-node src/index.js"
   },
   "author": "nicoelias997",
   "license": "ISC",
