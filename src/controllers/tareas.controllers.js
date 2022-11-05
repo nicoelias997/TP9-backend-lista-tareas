@@ -30,8 +30,19 @@ export const crearTarea = async (req, res) => {
 
     } catch(e){
         res.status(404).json({
-            message: "Hubo un error, intentelo mas tarde."
+            message: "Hubo un error, no pudimos crear una nueva tarea."
         })
     }
-
 }
+export const eliminarTarea = async (req, res) => {
+        try{
+        await Tarea.findByIdAndDelete(req.params.id)
+        res.status(200).json({
+            message: "Eliminamos la tarea con exito"
+        })
+    } catch(e){
+        res.status(404).json({
+            message: "No pudimos eliminar la tarea."
+        })
+    }
+     }
