@@ -2,6 +2,7 @@ import express from "express" //haremos que nuestro proyecto se apodere de un pu
 import cors from "cors"
 import morgan from "morgan"
 import path from "path"
+import tareasRouter from "./routes/tareas.routes"
 
 import "./database" 
 
@@ -23,3 +24,5 @@ app.use(express.urlencoded({extended: true}))
 app.use(morgan("dev"))
 
 app.use(express.static(path.join(__dirname, "../public")))
+
+app.use("/apitareas", tareasRouter)
