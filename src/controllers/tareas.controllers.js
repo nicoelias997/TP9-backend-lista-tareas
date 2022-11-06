@@ -46,3 +46,27 @@ export const eliminarTarea = async (req, res) => {
         })
     }
      }
+
+     export const obtenerTarea = async (req, res) => {
+        try{
+            const tareaBuscada = await Tarea.findById(req.params.id)
+        res.status(200).json(tareaBuscada)
+    } catch(e){
+        res.status(404).json({
+            message: "No pudimos encontrar la tarea."
+        })
+    }
+     }
+
+ export const editarTarea = async (req, res) => {
+        try{
+        await Tarea.findByIdAndUpdate(req.params.id, req.body)
+        res.status(200).json({
+            message: "Editamos la tarea con exito."
+        })
+    } catch(e){
+        res.status(404).json({
+            message: "No pudimos editar la tarea."
+        })
+    }
+     }

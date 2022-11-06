@@ -1,6 +1,6 @@
 import {Router} from "express"
 import { check } from "express-validator"
-import { crearTarea, listarTareas, eliminarTarea } from "../controllers/tareas.controllers"
+import { crearTarea, listarTareas, eliminarTarea, obtenerTarea, editarTarea } from "../controllers/tareas.controllers"
 
 const router = Router()
 
@@ -10,6 +10,7 @@ router.route("/tareas")
     [
         check("nombreTarea", "El nombre de la tarea es obligatoria.")
         .notEmpty()
+        .trim()
         .isLength({
             min: 1
         })
@@ -20,6 +21,18 @@ router.route("/tareas")
 
 router.route("/tareas/:id")
 .delete(eliminarTarea)
+.get(obtenerTarea)
+.put([
+    check("nombreTarea", "El nombre de la tarea es obligatoria.")
+    .notEmpty()
+    .trim()
+    .isLength({
+        min: 1
+    })
+    .withMessage("La tarea debe tener al menos 1 caracter.")
+],
+editarTarea
+)
 
 
 
