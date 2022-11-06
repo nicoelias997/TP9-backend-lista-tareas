@@ -20,19 +20,21 @@ router.route("/tareas")
 )
 
 router.route("/tareas/:id")
-.delete(eliminarTarea)
 .get(obtenerTarea)
-.put([
-    check("nombreTarea", "El nombre de la tarea es obligatoria.")
-    .notEmpty()
-    .trim()
-    .isLength({
-        min: 1
-    })
-    .withMessage("La tarea debe tener al menos 1 caracter.")
-],
-editarTarea
+.put(
+    [
+        check("nombreTarea", "El nombre de la tarea es obligatoria.")
+        .notEmpty()
+        .trim()
+        .isLength({
+            min: 1
+        })
+        .withMessage("La tarea debe tener al menos 1 caracter.")
+    ],
+    editarTarea
 )
+.delete(eliminarTarea)
+
 
 
 
