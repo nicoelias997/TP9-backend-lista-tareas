@@ -10,7 +10,6 @@ export const listarTareas = async (req, res) => {
             message: "No encontramos ninguna tarea."
         })
     }
-
 }
 
 export const crearTarea = async (req, res) => {
